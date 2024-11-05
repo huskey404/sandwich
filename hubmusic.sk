@@ -1,0 +1,3 @@
+on join:
+    play sound "hubmusic" in jukebox category
+    wait 3 minutes   # song length
