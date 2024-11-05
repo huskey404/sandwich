@@ -1,3 +1,21 @@
+variables:
+	{hubMusic::%player%} = true
+
 on join:
-    play sound "hubmusic" in jukebox category
-    wait 3 minutes   # song length
+    while {hubMusic::%player%} is true:
+        play sound "hubmusic" in jukebox category for player
+        wait 3 minutes   # replace with song length
+    
+command /music <boolean>:
+	trigger:
+		if arg-1 is on:
+			set {hubMusic::%player%} to true
+            while {hubMusic::%player%} is true:
+                play sound "hubmusic" in jukebox category for player
+                wait 3 minutes   # replace with song length
+		else if arg-1 is off:
+			set {hubMusic::%player%} to false
+            stop sound "hubmusic" in jukebox category for player
+		else:
+			message "&cUse on/off to toggle music"
+
